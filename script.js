@@ -2366,3 +2366,20 @@ if ("serviceWorker" in navigator) {
     alert("Unable to enable notifications.");
   }
 }
+
+window.testBankVaultNotification = async function () {
+  try {
+    const registration = await navigator.serviceWorker.ready;
+
+    await registration.showNotification("Bank Vault", {
+      body: "Your Bank Vault notifications are working.",
+      icon: "/icon-192.png",
+      badge: "/icon-192.png",
+      vibrate: [200, 100, 200]
+    });
+
+  } catch (error) {
+    console.error("Test notification error:", error);
+    alert("Unable to send test notification.");
+  }
+};
